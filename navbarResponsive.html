@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Navabar</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      html {
+        font-size: 62.5%;
+        overflow-x: hidden;
+      }
+      body{
+        overflow-x: hidden;
+      }
+
+      header {
+        background: linear-gradient(180deg, white, aqua);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 4.8rem;
+        height: 10rem;
+      }
+      .navbar-list {
+        list-style-type: none;
+        display: flex;
+        gap: 5rem;
+      }
+      .link {
+        text-decoration: none;
+        font-size: 3rem;
+        color: black;
+      }
+      .logo {
+        height: 3rem;
+        font-size: 4rem;
+        font-weight: bold;
+
+        font-family: Tahoma, sans-serif;
+        color: rgb(41, 24, 24);
+        border-radius: 10px;
+      }
+
+      .link:hover {
+        color: blue;
+      }
+      .sectionOne,
+      .sectionTwo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 60vh;
+        font-size: 2em;
+      }
+      .sectionOne {
+        background-color: palegreen;
+      }
+      .sectionTwo {
+        background-color: palevioletred;
+      }
+      .navbar-mobile-btn {
+         display:none;
+        background: transparent;
+        cursor: pointer;
+      }
+      .navbar-mobile-icon {
+        height: 2.5rem;
+        width: 2.5rem;
+        color: #212529;
+      }
+      .navbar-mobile-icon[name="close-outline"] {
+        display: none;
+      }
+
+      @media (max-width: 62em) {
+        .navbar-mobile-btn {
+          display: block;
+          z-index: 999;
+          border: 3px solid #212529;
+        }
+        .logo {
+          width: 30%;
+        }
+        .header {
+          position: relative;
+        }
+        .navbar {
+          /*   display: none; */
+          height: 100vh;
+          width: 100%;
+          background-color: #e7f5ff;
+          position: absolute;
+          top: 0;
+          left: 0;
+          display:flex;
+          justify-content: center;
+          align-items: center;
+
+          transform: translateX(100%);
+          transition: all .5s linear;
+
+          opacity:0;
+          visibility: hidden;
+          pointer-events: none;
+       
+        
+        }
+        .navbar-list{
+          flex-direction: column;
+          align-items: center;
+        }
+     .active .navbar{
+          transform: translateX(0);
+          opacity: 1;
+          visibility: visible;
+          pointer-events: auto;
+        }
+        .active .navbar-mobile-icon[name="close-outline"]{
+          display:block ;
+        }
+        .active .navbar-mobile-icon[name="menu-outline"]{
+          display:none ;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header active">
+      <span class="logo">ResponsiveNavbar</span>
+      <nav class="navbar">
+        <ul class="navbar-list">
+          <li><a class="link" href="">Home</a></li>
+          <li><a class="link" href="">About</a></li>
+          <li><a class="link" href="">Services</a></li>
+          <li><a class="link" href="">Gallery</a></li>
+          <li><a class="link" href="">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="navbar-mobile-btn">
+        <ion-icon name="menu-outline" class="navbar-mobile-icon"></ion-icon>
+        <ion-icon name="close-outline" class="navbar-mobile-icon"></ion-icon>
+      </div>
+    </header>
+    <main>
+      <section class="sectionOne">
+        <div class="one">
+          <h1>Home</h1>
+        </div>
+      </section>
+    </main>
+    <section class="sectionTwo">
+      <div class="one">
+        <h1>Service section</h1>
+      </div>
+    </section>
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
+  <script>
+    const navBar=document.querySelector(".navbar-mobile-btn")
+    const navbar=document.querySelector(".active")
+    const toggleNavbar=()=>{
+        navbar.classList.toggle("active")
+    }
+
+    navBar.addEventListener("click",()=>toggleNavbar());
+  </script>
+</html>
